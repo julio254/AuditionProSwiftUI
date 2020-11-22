@@ -11,7 +11,7 @@ import SwiftUI
 struct AuditionProApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(audioRecorder: AudioRecorder())
         }
     }
 }
