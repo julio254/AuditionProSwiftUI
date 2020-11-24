@@ -38,6 +38,7 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Audition Pro")
+            .navigationBarItems(trailing: EditButton())
         }
     }
 }

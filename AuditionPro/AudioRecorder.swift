@@ -66,6 +66,18 @@ class AudioRecorder: NSObject, ObservableObject {
         fetchRecordings()
     }
     
+    func deleteRecording(urlsToDelete: [URL]) {
+        for url in urlsToDelete {
+            print(url)
+            do {
+                try FileManager.default.removeItem(at: url)
+            } catch {
+                print("File could not be deleted!")
+            }
+        }
+        fetchRecordings()
+    }
+    
     func fetchRecordings() {
         recordings.removeAll()
         
