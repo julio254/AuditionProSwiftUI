@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject var audioRecorder: AudioRecorder
+    @State private var isShareSheetShowing = false
     
     var body: some View {
         NavigationView {
@@ -38,8 +39,19 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Audition Pro")
-            .navigationBarItems(trailing: EditButton())
+            .navigationBarItems(leading: Button(action: shareButton) {
+                Image(systemName: "square.and.arrow.up").font(.title2)
+            }, trailing: EditButton())
         }
+    }
+    
+    func shareButton() {
+        isShareSheetShowing.toggle()
+        
+        let url = URL(string: "https://google.com")
+        let av = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
     }
 }
 
